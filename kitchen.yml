@@ -1,0 +1,29 @@
+---
+driver:
+  name: vagrant
+  provider: virtualbox
+  username: vagrant
+  password: vagrant
+
+## The forwarded_port port feature lets you connect to ports on the VM guest
+## via localhost on the host.
+## see also: https://www.vagrantup.com/docs/networking/forwarded_ports
+
+#  network:
+#    - ["forwarded_port", {guest: 80, host: 8080}]
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-20.04
+
+provisioner:
+  name: chef_zero
+  command:   'wget https://packages.chef.io/files/stable/chefdk/4.13.3/ubuntu/20.04/chefdk_4.13.3-1_amd64.deb &&  sudo dpkg -i chefdk_4.13.3-1_amd64.deb'
+
+suites:
+  - name: default
+    verifier:
+      inspec_tests:
+        - test/integration/default
