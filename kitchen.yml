@@ -1,13 +1,6 @@
 ---
 driver:
-  name: vagrant
-  provider: virtualbox
-  username: vagrant
-  password: vagrant
-
-## The forwarded_port port feature lets you connect to ports on the VM guest
-## via localhost on the host.
-## see also: https://www.vagrantup.com/docs/networking/forwarded_ports
+  name: docker
 
 #  network:
 #    - ["forwarded_port", {guest: 80, host: 8080}]
@@ -16,7 +9,7 @@ verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-20.04
+  - name: ubuntu-18.04
 
 provisioner:
   name: chef_zero
@@ -27,3 +20,5 @@ suites:
     verifier:
       inspec_tests:
         - test/integration/default
+transport:
+  name: docker
