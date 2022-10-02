@@ -40,6 +40,7 @@ ruby_block 'create_library' do
     con.exec "INSERT INTO favorite_books VALUES(7,'The Pragmatic Programmer')"
     con.exec "INSERT INTO favorite_books VALUES(8,'Dreaming in Code')"
     con.exec "INSERT INTO favorite_books VALUES(9,'The Clean Coder')"
+    con.exec "INSERT INTO favorite_books VALUES(9,'Growing Object-Oriented Software, Guided by Tests')"
   rescue PG::Error => e
     puts e.message
   ensure
